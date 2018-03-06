@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for obj in object_list %}
+
+                        <div class="col-md-6 col-sm-12 col-lg-6">
+                            <article class=" blog-teaser">
+                                <header>
+                                 {% if obj.image %}
+                                    <img src="{{ obj.image.url }}" alt="A Cat">
+                                    {% endif %}
+                                    <h3>{{ obj.title |linebreaks|truncatechars:28}}</h3>
+                                    <span class="..">{{ obj.updated }}</span>
+                                    <hr>
+                                </header>
+                                <div class="..">
+                                    {{ obj.content|linebreaks|truncatechars:100}}
+                                </div>
+                                <div class="clearfix">
+                                    <a href="{{ obj.get_absolute_url }}" class="btn btn-tales-one">Посмотреть</a>
+                                </div>
+                            </article>
+                        </div>
+
+                        {% endfor %}
+                        <!-- off -->
+                        {% endblock content %}
